@@ -8,13 +8,24 @@ blocks:
     alignment: left
     segments:
 
+
+      - type: os
+        style: diamond
+        foreground: p:white
+        background: p:purple
+        leading_diamond: "\u256d\u2500\ue0b2"
+        trailing_diamond: "\ue0b0"
+        template: " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }}  "
+        properties:
+          debian: "\uf327"
+
 ## first section - time
       - type: time
         alias: time123
         style: diamond
         foreground: p:white
         background: p:light-purple
-        leading_diamond: "\u256d\u2500\ue0b2"
+        leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b0"        
         properties:
           time_format: <b>3:04 PM</b>
@@ -22,7 +33,6 @@ blocks:
 ## second section username
       - type: session
         style: diamond
-        powerline_symbol: "\ue0b0"
         foreground: p:white
         background: p:purple
         leading_diamond: "<transparent,background>\ue0b0</>"
@@ -31,13 +41,33 @@ blocks:
 
  ## third section path     
       - type: path
-        style: powerline
-        powerline_symbol: "\ue0b0"
+        style: diamond
         foreground: p:white
         background: p:light-purple
+        leading_diamond: "<transparent,background>\ue0b0</>"
+        trailing_diamond: "\ue0b0"
         template: " \uf74a {{ path .Path .Location }} "
         properties:
-          style: folder
+          style: full
+
+
+
+          
+
+
+
+## spotify - didn't actually configure yet
+      # - type: spotify
+      #   style: diamond
+      #   foreground: p:white
+      #   background: p:purple
+      #   leading_diamond: "<transparent,background>\ue0b0</>"
+      #   trailing_diamond: "\ue0b0"
+      #   template: " {{ .Icon }}{{ if ne .Status \"stopped\" }}{{ .Artist }} - {{ .Track }}{{ end }} "
+      #   properties:
+      #     playing_icon: " "
+      #     paused_icon: " "
+      #     stopped_icon: " "    
 
 ## for git      
       - type: git
@@ -61,7 +91,7 @@ blocks:
           fetch_upstream_icon: true
           github_icon: "\uf7a3"
 
-## for root user      
+## for root user - not done    
       - type: root
         style: powerline
         powerline_symbol: "\ue0b0"
@@ -74,8 +104,9 @@ blocks:
         style: diamond
         foreground: p:white
         background: p:purple
-        background_templates:
-          - "{{ if gt .Code 0 }}p:red{{ end }}"
+        # if you want to make the background red when something fails enable this
+        # background_templates:
+        #   - "{{ if gt .Code 0 }}p:red{{ end }}"
         leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b4"
         template: " {{ if gt .Code 0 }}\uf00d{{ else }}\uf00c{{ end }} "
@@ -88,7 +119,7 @@ blocks:
     newline: true
     segments:
 
-    - foreground: "p:light-purple"
+    - foreground: "p:purple"
       style: plain
       template: "\u2570\u2500\u276f"
       type: text
@@ -117,5 +148,3 @@ palette:
   red: "#D81E5B"
   white: "#E0DEF4"
   purple: "#6500e9"
-
-         
