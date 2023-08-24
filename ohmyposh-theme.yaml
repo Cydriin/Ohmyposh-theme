@@ -20,15 +20,15 @@ blocks:
           debian: "\uf327"
 
 ## first section - time
-      - type: time
-        alias: time123
+      - type: time        
         style: diamond
         foreground: p:white
-        background: p:light-purple
+        background: p:light-light-purple
         leading_diamond: "<transparent,background>\ue0b0</>"
-        trailing_diamond: "\ue0b0"        
+        trailing_diamond: "\ue0b0"
+        template: " {{ .CurrentDate | date .Format }} "
         properties:
-          time_format: <b>3:04 PM</b>
+          time_format: "<b>3:04 PM</b>"
 
 ## second section username
       - type: session
@@ -43,10 +43,10 @@ blocks:
       - type: path
         style: diamond
         foreground: p:white
-        background: p:light-purple
+        background: p:light-light-purple
         leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b0"
-        template: " \uf74a {{ path .Path .Location }} "
+        template: " \ue5ff {{ path .Path .Location }} "
         properties:
           style: full
 
@@ -145,6 +145,7 @@ palette:
   blue: "#4B95E9"
   green: "#59C9A5"
   light-purple: "#8955e9"
+  light-light-purple: "#4615a1"
   red: "#D81E5B"
   white: "#E0DEF4"
   purple: "#6500e9"
