@@ -11,8 +11,8 @@ blocks:
 ## 1st section - OS symbol
       - type: os
         style: diamond
-        foreground: p:light-blue
-        background: p:light-purple
+        foreground: p:purple
+        background: p:light-blue
         leading_diamond: "\u256d\u2500\ue0b2"
         trailing_diamond: "\ue0b0"
         template: " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }}  "
@@ -34,7 +34,7 @@ blocks:
       - type: session
         style: diamond
         foreground: p:white
-        background: p:light-purple
+        background: p:light-blue
         leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b0"
         template: " <b>{{ if .SSHSession }}\uf74a {{ end }}{{ .UserName }}</b> "         
@@ -103,8 +103,8 @@ blocks:
       ## last section
       - type: exit
         style: diamond
-        foreground: p:light-blue
-        background: p:light-purple
+        foreground: p:purple
+        background: p:light-blue
         # if you want to make the background red when something fails enable this
         # background_templates:
         #   - "{{ if gt .Code 0 }}p:red{{ end }}"
@@ -120,7 +120,7 @@ blocks:
     newline: true
     segments:
 
-    - foreground: p:light-purple
+    - foreground: p:light-blue
       style: plain
       template: "\u2570\u2500\u276f"
       type: text
