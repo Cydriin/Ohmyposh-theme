@@ -11,8 +11,8 @@ blocks:
 ## 1st section - OS symbol
       - type: os
         style: diamond
-        foreground: p:purple
-        background: p:light-blue
+        foreground: p:light-blue
+        background: p:light-light-purple
         leading_diamond: "\u256d\u2500\ue0b2"
         trailing_diamond: "\ue0b0"
         template: " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }}  "
@@ -22,31 +22,33 @@ blocks:
 ## 2nd section - time
       - type: time        
         style: diamond
-        foreground: p:white
+        foreground: p:light-blue
         background: p:purple
         leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b0"
         template: " {{ .CurrentDate | date .Format }} "
         properties:
           time_format: "<b>3:04 PM</b>"
-          
+
 ## 3rd section - username
       - type: session
         style: diamond
-        foreground: p:white
-        background: p:light-blue
+        foreground: p:light-blue
+        background: p:light-light-purple
         leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b0"
-        template: " <b>{{ if .SSHSession }}\uf74a {{ end }}{{ .UserName }}</b> "         
+        template: " {{ if .SSHSession }}\uf74a {{ end }}{{ .UserName }} "
 
- ## 4th section path     
+ ## 4th section - directory path     
       - type: path
+
+
         style: diamond
-        foreground: p:white
+        foreground: p:light-blue
         background: p:purple
         leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b0"
-        template: " \ue5ff {{ path .Path .Location }} "
+        template: "<b> \ue5ff {{ path .Path .Location }}</b> "
         properties:
           style: agnoster_short
           max_depth: 5
@@ -61,7 +63,7 @@ blocks:
       # - type: spotify
       #   style: diamond
       #   foreground: p:white
-      #   background: p:light-blue
+      #   background: p:purple
       #   leading_diamond: "<transparent,background>\ue0b0</>"
       #   trailing_diamond: "\ue0b0"
       #   template: " {{ .Icon }}{{ if ne .Status \"stopped\" }}{{ .Artist }} - {{ .Track }}{{ end }} "
@@ -97,14 +99,14 @@ blocks:
         style: powerline
         powerline_symbol: "\ue0b0"
         foreground: p:white
-        background: p:light-blue
+        background: p:purple
         template: " \uf0e7 "
       
-      ## last section
+## last section
       - type: exit
         style: diamond
-        foreground: p:purple
-        background: p:light-blue
+        foreground: p:light-blue
+        background: p:light-light-purple
         # if you want to make the background red when something fails enable this
         # background_templates:
         #   - "{{ if gt .Code 0 }}p:red{{ end }}"
@@ -120,7 +122,7 @@ blocks:
     newline: true
     segments:
 
-    - foreground: p:light-blue
+    - foreground: "p:light-light-purple"
       style: plain
       template: "\u2570\u2500\u276f"
       type: text
@@ -143,11 +145,11 @@ blocks:
 
 palette:
   black: "#262B44"
-  blue: "#0575e6"
+  blue: "#10a2ec"
+  light-blue: "#10ddec"
   green: "#59C9A5"
-  light-purple: "#b800ff"
-  light-light-purple: "#4615a1"
-  light-blue: "#10a2ec"
+  light-purple: "#6500e9"
+  light-light-purple: "#8955e9"
   red: "#D81E5B"
   white: "#E0DEF4"
-  purple: "#6f42c1"
+  purple: "#4615a1"
