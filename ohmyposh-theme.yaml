@@ -1,18 +1,18 @@
 $schema: https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 version: 2
 final_space: true
-# console_title_template: "{{ .Shell }} in {{ .Folder }}"
 blocks:
-  
+
   - type: prompt
     alignment: left
+    newline: true
     segments:
 
 ## 1st section - OS symbol
       - type: os
         style: diamond
-        foreground: p:purple
-        background: p:light-blue
+        foreground: p:light-blue
+        background: p:light-light-purple
         leading_diamond: "\u256d\u2500\ue0b2"
         trailing_diamond: "\ue0b0"
         template: " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }}  "
@@ -20,7 +20,7 @@ blocks:
           debian: "\uf327"
 
 ## 2nd section - time
-      - type: time        
+      - type: time
         style: diamond
         foreground: p:white
         background: p:purple
@@ -29,17 +29,17 @@ blocks:
         template: " {{ .CurrentDate | date .Format }} "
         properties:
           time_format: "<b>3:04 PM</b>"
-          
+
 ## 3rd section - username
       - type: session
         style: diamond
         foreground: p:white
-        background: p:light-blue
+        background: p:light-light-purple
         leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b0"
-        template: " <b>{{ if .SSHSession }}\uf74a {{ end }}{{ .UserName }}</b> "         
+        template: " <b>{{ if .SSHSession }}\uf74a {{ end }}{{ .UserName }}</b> "
 
- ## 4th section path     
+## 4th section path
       - type: path
         style: diamond
         foreground: p:white
@@ -51,37 +51,18 @@ blocks:
           style: agnoster_short
           max_depth: 5
 
-
-
-          
-
-
-
-## spotify - didn't actually configure yet
-      # - type: spotify
-      #   style: diamond
-      #   foreground: p:white
-      #   background: p:light-blue
-      #   leading_diamond: "<transparent,background>\ue0b0</>"
-      #   trailing_diamond: "\ue0b0"
-      #   template: " {{ .Icon }}{{ if ne .Status \"stopped\" }}{{ .Artist }} - {{ .Track }}{{ end }} "
-      #   properties:
-      #     playing_icon: " "
-      #     paused_icon: " "
-      #     stopped_icon: " "    
-
-## for git      
+## for git
       - type: git
         style: powerline
         powerline_symbol: "\ue0b0"
-        foreground: p:black
+        foreground: p:white
         foreground_templates:
           - "{{ if or (.Working.Changed) (.Staging.Changed) }}p:black{{ end }}"
           - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:white{{ end }}"
           - "{{ if gt .Ahead 0 }}p:white{{ end }}"
         background: p:green
         background_templates:
-          - "{{ if or (.Working.Changed) (.Staging.Changed) }}p:purple{{ end }}"
+          - "{{ if or (.Working.Changed) (.Staging.Changed) }}p:green{{ end }}"
           - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}"
           - "{{ if gt .Ahead 0 }}#49416D{{ end }}"
           - "{{ if gt .Behind 0 }}#7A306C{{ end }}"
@@ -92,55 +73,47 @@ blocks:
           fetch_upstream_icon: true
           github_icon: "\uf7a3"
 
-## for root user - not done    
+## for root user - not done
       - type: root
         style: powerline
         powerline_symbol: "\ue0b0"
         foreground: p:white
-        background: p:light-blue
+        background: p:light-light-purple
         template: " \uf0e7 "
-      
+
       ## last section
       - type: exit
         style: diamond
-        foreground: p:purple
-        background: p:light-blue
+        foreground: p:light-blue
+        background: p:light-light-purple
         # if you want to make the background red when something fails enable this
-        # background_templates:
-        #   - "{{ if gt .Code 0 }}p:red{{ end }}"
+        background_templates:
+          - "{{ if gt .Code 0 }}p:red{{ end }}"
         leading_diamond: "<transparent,background>\ue0b0</>"
         trailing_diamond: "\ue0b4"
         template: " {{ if gt .Code 0 }}\uf00d{{ else }}\uf00c{{ end }} "
         properties:
           always_enabled: true
-  
-  # the 2nd prompt
+
+## the 2nd prompt
   - type: prompt
     alignment: left
     newline: true
     segments:
 
-    - foreground: p:light-blue
+    - foreground: p:light-light-purple
       style: plain
       template: "\u2570\u2500\u276f"
       type: text
 
 
-## can't get this to work
+## prompt aftet pressing enter
+transient_prompt:
+   foreground: p:white
+   background: transparent
+   template: "<p:purple,transparent>\ue0b2</><,p:purple> {{now | date \"3:04:05 PM\"}} </><p:purple,transparent>\ue0b0</> "
 
-# transient_prompt:
-#   foreground: p:purple
-#   background: p:transparent
-#   template: "<p:white>\ue0b6</><,p:black> {{ .Segments.time123.Output }} </><p:white>\ue0b0</> "
-
-# this kind of works but it shows my username instead
-
-# transient_prompt:
-#   foreground: "p:white"
-#   background: transparent
-#   template: "<p:purple,transparent>\ue0b6</><,p:purple> {{ .Folder }} </><p:purple,transparent>\ue0b0</> "
-
-
+## colors
 palette:
   black: "#262B44"
   blue: "#0575e6"
